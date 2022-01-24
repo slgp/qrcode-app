@@ -11,7 +11,7 @@ export default function SignIn({ authenticate }) {
 
   const onFormSubmit = async (data) => {
     const userData = await mutateAsync({...data})
-    authenticate(userData)
+    authenticate(userData?.data)
   }
 
   return (

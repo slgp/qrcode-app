@@ -18,6 +18,7 @@ export default function Layout({children}) {
   useEffect(() => {
     let user = localStorage.getItem("user");
     user = user && JSON.parse(user)
+    !user 
     user ? setAuth(user) : setAuth(false);
   }, []);
 
@@ -27,7 +28,7 @@ export default function Layout({children}) {
 
   const handleLogout = () => {
     localStorage.removeItem("user")
-    setAuth(null)
+    setAuth(false)
   }
 
   return (
@@ -49,7 +50,7 @@ export default function Layout({children}) {
           <Route path="/update-document/:id" element={<UpdateDocument currentUser={auth}/>} />
         </>
       )}
-      <Route path="*" element={<Navigate to={auth ? "/" : "/signin"} />} />
+      <Route path="*" element={<Navigate to={auth !== null ? "/" : "signin"} />} />
       {children}
     </Routes>
     
