@@ -50,7 +50,7 @@ export default function Layout({children}) {
           <Route path="/update-document/:id" element={<UpdateDocument currentUser={auth}/>} />
         </>
       )}
-      <Route path="*" element={<Navigate to={auth !== null ? "/" : "signin"} />} />
+      <Route path="*" element={<Navigate to={auth !== false ? "/" : "signin"} />} />
       {children}
     </Routes>
     
